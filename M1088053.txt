@@ -1,0 +1,33 @@
+//import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Milestone {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		 System.setProperty("webdriver.chrome.driver","./drivers//chromedriver.exe");
+		 WebDriver driver=new ChromeDriver();
+		 driver.get("https://www.moneycontrol.com/");
+		 Thread.sleep(2000);
+		 System.out.println(driver.getTitle());
+		 driver.manage().window().fullscreen();
+		
+		 Thread.sleep(2000);
+		Actions action = new Actions(driver);
+		WebElement webdriver = driver.findElement(By.linkText("Personal Finance"));
+		action.moveToElement(webdriver).build().perform();
+		//webDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		Thread.sleep(2000);
+        //driver.findElement(null)
+		driver.findElement(By.linkText("Income Tax calculator")).click();
+		driver.findElement(By.xpath("//span[@class='styspri icradio_mid checked']")).click();
+		driver.findElement(By.xpath("//input[@name='age']")).sendKeys("22");
+	   
+	}
+
+}
